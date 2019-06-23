@@ -1,1 +1,4 @@
-document.getElementById('title1').textContent = '新標題';
+var cookiePrice = 35;
+
+
+document.getElementById("price").textContent = cookiePrice;
