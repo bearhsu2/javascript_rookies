@@ -1,28 +1,11 @@
-var cookiePrice = 35;
-var myMoney = 15;
+document.getElementById('countId').onclick = function () {
 
+    var hamPrice = 50;
+    var cokePrice = 20;
+    var hamNum = parseInt(document.getElementById('hamNumId').value);
+    var cokeNum = parseInt(document.getElementById('cokeNumId').value);
 
-document.getElementById("cookiePrice").textContent = cookiePrice;
-document.getElementById("myMoney").textContent = myMoney;
-document.getElementById("diff").textContent = cookiePrice - myMoney;
+    document.getElementById('totalId').textContent = hamNum * hamPrice + cokeNum * cokePrice;
 
-console.log(cookiePrice);
-
-
-function greet() {
-    console.log('Hello');
-    console.log('World')
-}
-
-function count(a, b) {
-    console.log('total = ' + a*b);
-}
-
-greet();
-count(3,4);
-
-function show() {
-    console.log(myMoney);
 
 }
-show();
