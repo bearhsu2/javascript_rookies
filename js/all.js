@@ -19,9 +19,16 @@ var farm = {
     farmer: 'casper',
     dogs: ['james', 'bond'],
     cornField: [8, 5, 6],
-    goDinner: function(){
+    goDinner: function () {
         console.log(farm.farmer + ', go home for dinner!!!');
     }
 };
 
-farm.goDinner();
+
+var farms = [
+    {farmer: 'casper'},
+    {farmer: 'peter'}
+]
+
+console.log(farms[0].farmer);
+console.log(farms[1].farmer);
