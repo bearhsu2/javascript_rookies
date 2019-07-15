@@ -1,11 +1,6 @@
-var el = document.querySelector(".titleClass a");
+var el = document.querySelector("#main");
 
 
-el.setAttribute('href', 'http://www.yahoo.com.tw');
+var str = "<h1 class='blue'>1234</h1>";
+el.innerHTML = str + str;
 
-var el3 = document.querySelector(".titleClass").innerHTML;
-console.log(el3);
-
-
-var el2 = document.querySelector(".str");
-el2.setAttribute('id', 'strId');
