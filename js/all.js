@@ -1,23 +1,9 @@
-var el = document.querySelector('.list');
+var str = document.createElement('em');
+str.textContent = '1234';
+str.setAttribute('class', 'blue');
 
 
-var farms = [
-    {
-        farmer: "Charlie",
-        dogs: ['Bow', 'Wow']
-    },
-    {
-        farmer: "Bob",
-        dogs: ['Andy']
-    }
-];
+var el = document.querySelector('.title');
+el.appendChild(str);
 
-var str = '';
 
-for(var i = 0; i < farms.length; i++){
-
-    var content = '<li>'+ farms[i].farmer +'</li>';
-    str += content;
-}
-
-el.innerHTML = str;
