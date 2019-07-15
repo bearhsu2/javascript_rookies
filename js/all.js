@@ -1,3 +1,11 @@
-// document.getElementById('answerId').textContent = 'AAA';
+var el = document.querySelector(".titleClass a");
 
-document.querySelector('.answerClass em').textContent = 'Yes';
+
+el.setAttribute('href', 'http://www.yahoo.com.tw');
+
+var el3 = document.querySelector(".titleClass").innerHTML;
+console.log(el3);
+
+
+var el2 = document.querySelector(".str");
+el2.setAttribute('id', 'strId');
