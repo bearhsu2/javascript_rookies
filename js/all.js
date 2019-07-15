@@ -1,6 +1,23 @@
-var el = document.querySelector("#main");
+var el = document.querySelector('.list');
 
 
-var str = "<h1 class='blue'>1234</h1>";
-el.innerHTML = str + str;
+var farms = [
+    {
+        farmer: "Charlie",
+        dogs: ['Bow', 'Wow']
+    },
+    {
+        farmer: "Bob",
+        dogs: ['Andy']
+    }
+];
 
+var str = '';
+
+for(var i = 0; i < farms.length; i++){
+
+    var content = '<li>'+ farms[i].farmer +'</li>';
+    str += content;
+}
+
+el.innerHTML = str;
