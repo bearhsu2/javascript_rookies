@@ -10,3 +10,11 @@ var nowPeople = 1;
 
 var notAllArrived = totalPeople != nowPeople;
 document.getElementById('peopleId').textContent = notAllArrived;
+
+
+if (totalPeople == nowPeople) {
+    console.log("equal!!")
+} else {
+    console.log("not equal...")
+}
+
