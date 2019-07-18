@@ -1,12 +1,6 @@
-var elBtn = document.querySelector('.btn');
+var element = document.querySelector('.link');
 
-elBtn.addEventListener('click', function (event) {
-    event.stopPropagation();
-    alert('btn');
-}, false);
-
-var elBody = document.querySelector('.body');
-
-elBody.addEventListener('click', function () {
-    alert('body');
-}, false);
+element.addEventListener('click', function (event) {
+    alert("WOW!!!")
+    event.preventDefault();
+});
