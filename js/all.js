@@ -1,13 +1,13 @@
 var element = document.querySelector('.btn');
 
 element.onclick = function (event) {
-
-    console.log(event);
-
+    console.log('haha');
 }
 
-var element2 = document.querySelector('.btn2');
+element.addEventListener('click', function(){
+   alert('click1');
+});
 
-element2.addEventListener('click', function (event) {
-    alert(event);
-}, false);
+element.addEventListener('click', function(){
+   alert('click2');
+});
