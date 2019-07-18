@@ -1,13 +1,11 @@
-var element = document.querySelector('.btn');
+var elBtn = document.querySelector('.btn');
 
-element.onclick = function (event) {
-    console.log('haha');
-}
+elBtn.addEventListener('click', function(){
+   alert('btn');
+}, false);
 
-element.addEventListener('click', function(){
-   alert('click1');
-});
+var elBody = document.querySelector('.body');
 
-element.addEventListener('click', function(){
-   alert('click2');
-});
+elBody.addEventListener('click', function(){
+   alert('body');
+}, false);
