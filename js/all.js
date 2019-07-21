@@ -1,32 +1,21 @@
-var area = document.querySelector("#areaId");
-var list = document.querySelector(".list");
+var body = document.body;
 
-var country = [
-    {
-        farmer: "Allen",
-        area: "Area1"
-    }, {
-        farmer: "Bob",
-        area: "Area2"
-    }, {
-        farmer: "Charlie",
-        area: "Area2"
-    }
-];
 
-function updateList(e) {
-    var len = country.length;
+function goRocket(event) {
 
-    var str = '';
-    for(var i = 0; i < len; i++){
-        var element = country[i];
-
-        if (element.area == e.target.value){
-            str += '<li>' + element.farmer + '</li>';
-        }
+    switch (event.keyCode) {
+        case 49:
+            document.querySelector(".rocket-1").style.bottom = '2000px';
+            break;
+        case 50:
+            document.querySelector(".rocket-2").style.bottom = '2000px';
+            break;
+        case 51:
+            document.querySelector(".rocket-3").style.bottom = '2000px';
+            break;
     }
 
-    list.innerHTML = str;
 }
 
-area.addEventListener('change', updateList, false);
+
+body.addEventListener('keydown', goRocket, false);
