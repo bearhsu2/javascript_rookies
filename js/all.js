@@ -19,3 +19,9 @@ function goRocket(event) {
 
 
 body.addEventListener('keydown', goRocket, false);
+
+var inputEl = document.querySelector("#inputId");
+function alertMe() {
+    alert('BLUR');
+}
+inputEl.addEventListener('blur', alertMe, false);
