@@ -22,6 +22,6 @@ body.addEventListener('keydown', goRocket, false);
 
 var inputEl = document.querySelector("#inputId");
 function alertMe() {
-    alert('BLUR');
+    alert('MOUSE_MOVE');
 }
-inputEl.addEventListener('blur', alertMe, false);
+inputEl.addEventListener('mousemove', alertMe, false);
