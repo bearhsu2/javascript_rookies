@@ -86,3 +86,7 @@ body {
     left: 630px;
     width: 10%;
 }
+
+.mouseImg{
+    position: fixed;
+}

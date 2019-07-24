@@ -17,11 +17,16 @@ function goRocket(event) {
 
 }
 
-
 body.addEventListener('keydown', goRocket, false);
 
-var inputEl = document.querySelector("#inputId");
-function alertMe() {
-    alert('MOUSE_MOVE');
+//=====
+
+var mouseImg = document.querySelector('.mouseImg');
+
+function getPosition(e) {
+
+    mouseImg.style.left = e.clientX + 'px';
+    mouseImg.style.top = e.clientY + 'px';
 }
-inputEl.addEventListener('mousemove', alertMe, false);
+
+body.addEventListener('mousemove', getPosition, false);
