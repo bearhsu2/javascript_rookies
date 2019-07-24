@@ -1,32 +1,17 @@
-var body = document.body;
+var writeButton = document.querySelector('.writeNameButton');
+var readButton = document.querySelector('.readNameButton');
 
-
-function goRocket(event) {
-
-    switch (event.keyCode) {
-        case 49:
-            document.querySelector(".rocket-1").style.bottom = '2000px';
-            break;
-        case 50:
-            document.querySelector(".rocket-2").style.bottom = '2000px';
-            break;
-        case 51:
-            document.querySelector(".rocket-3").style.bottom = '2000px';
-            break;
-    }
+function writeName() {
+    var name = document.querySelector('.inputName').value;
+    localStorage.setItem('name', name);
 
 }
 
-body.addEventListener('keydown', goRocket, false);
-
-//=====
-
-var mouseImg = document.querySelector('.mouseImg');
-
-function getPosition(e) {
-
-    mouseImg.style.left = e.clientX + 'px';
-    mouseImg.style.top = e.clientY + 'px';
+function readName() {
+    var name = localStorage.getItem('name');
+    alert(name);
 }
 
-body.addEventListener('mousemove', getPosition, false);
+writeButton.addEventListener('click', writeName);
+
+readButton.addEventListener('click', readName);
