@@ -1,17 +1,14 @@
-var writeButton = document.querySelector('.writeNameButton');
-var readButton = document.querySelector('.readNameButton');
+var originlArray = [
+    {name: 'Kuma', age: 37},
+    {name: 'HaHa', age: 12}
+]
 
-function writeName() {
-    var name = document.querySelector('.inputName').value;
-    localStorage.setItem('name', name);
+var string = JSON.stringify(originlArray);
 
-}
+localStorage.setItem('data', string);
 
-function readName() {
-    var name = localStorage.getItem('name');
-    alert(name);
-}
+var newString = localStorage.getItem('data');
 
-writeButton.addEventListener('click', writeName);
+var newArray = JSON.parse(newString);
 
-readButton.addEventListener('click', readName);
+alert(newArray[0].name);
