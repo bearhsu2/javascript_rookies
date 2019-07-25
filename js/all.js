@@ -1,14 +1,14 @@
-var originlArray = [
-    {name: 'Kuma', age: 37},
-    {name: 'HaHa', age: 12}
-]
+var item = document.querySelector('.list li');
 
-var string = JSON.stringify(originlArray);
 
-localStorage.setItem('data', string);
+function checkData(e) {
 
-var newString = localStorage.getItem('data');
+    var num = e.target.dataset.num;
+    var dog = e.target.dataset.dog;
 
-var newArray = JSON.parse(newString);
+    alert(num);
+    alert(dog);
 
-alert(newArray[0].name);
+}
+
+item.addEventListener('click', checkData, false);
