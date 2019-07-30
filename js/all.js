@@ -26,7 +26,7 @@ var list = document.querySelector('.list');
 function updateList(event) {
 
     var todoListString = window.localStorage.getItem('todoList');
-    if (todoListString === null || todoListString == '') {
+    if (todoListString == null || todoListString == '') {
         todoListString = '[]';
     }
     todoList = JSON.parse(todoListString);
@@ -34,9 +34,7 @@ function updateList(event) {
     var length = todoList.length;
     var string = '';
     for (var i = 0; i < length; i++) {
-
-        string += "<li data-num='" + i + "'>" + todoList[i] + "</li>";
-
+        string += "<li>" + todoList[i] + "<button data-num=" + i + ">刪除</button></li>";
     }
 
     list.innerHTML = string;
@@ -44,3 +42,15 @@ function updateList(event) {
 }
 
 updateList();
+
+function removeItemFromList(e) {
+
+    if (e.target.nodeName != 'BUTTON') {
+        return
+    }
+
+    console.log(e.target.dataset.num);
+
+}
+
+list.addEventListener('click', removeItemFromList);
