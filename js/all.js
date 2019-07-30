@@ -1,14 +1,31 @@
-var item = document.querySelector('.list li');
+var todoList = [];
 
+var inputButton = document.querySelector('.inputButton');
+var inputText = document.querySelector('.inputText');
 
-function checkData(e) {
+function putAndShow() {
+    var inputTextValue = inputText.value;
 
-    var num = e.target.dataset.num;
-    var dog = e.target.dataset.dog;
+    if (inputTextValue == '') {
+        return;
+    }
 
-    alert(num);
-    alert(dog);
+    todoList.push(inputTextValue);
 
+    window.localStorage.setItem('todoList', JSON.stringify(todoList));
 }
 
-item.addEventListener('click', checkData, false);
+inputButton.addEventListener('click', putAndShow);
+
+
+
+// var list  = document.querySelector('.list');
+//
+//
+// function updateList(event) {
+//
+//
+//
+// }
+//
+// item.addEventListener('click', updateList, false);
