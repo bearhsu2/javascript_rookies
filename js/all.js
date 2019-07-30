@@ -3,25 +3,29 @@ var todoList = [];
 var inputButton = document.querySelector('.inputButton');
 var inputText = document.querySelector('.inputText');
 
+function updateLocalStorage() {
+    window.localStorage.setItem('todoList', JSON.stringify(todoList));
+}
+
+function updateLocalStorageAndList() {
+    updateLocalStorage();
+    updateList();
+}
+
 function putAndShow() {
     var inputTextValue = inputText.value;
-
     if (inputTextValue == '') {
         return;
     }
-
     todoList.push(inputTextValue);
 
-    window.localStorage.setItem('todoList', JSON.stringify(todoList));
-
+    updateLocalStorage();
     updateList();
 }
 
 inputButton.addEventListener('click', putAndShow);
 
-
 var list = document.querySelector('.list');
-
 
 function updateList(event) {
 
@@ -49,8 +53,9 @@ function removeItemFromList(e) {
         return
     }
 
-    console.log(e.target.dataset.num);
+    todoList.splice(e.target.dataset.num, 1);
 
+    updateLocalStorageAndList();
 }
 
 list.addEventListener('click', removeItemFromList);
