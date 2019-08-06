@@ -1,32 +1,61 @@
-var body = document.body;
+var todoList = [];
 
+var inputButton = document.querySelector('.inputButton');
+var inputText = document.querySelector('.inputText');
 
-function goRocket(event) {
+function updateLocalStorage() {
+    window.localStorage.setItem('todoList', JSON.stringify(todoList));
+}
 
-    switch (event.keyCode) {
-        case 49:
-            document.querySelector(".rocket-1").style.bottom = '2000px';
-            break;
-        case 50:
-            document.querySelector(".rocket-2").style.bottom = '2000px';
-            break;
-        case 51:
-            document.querySelector(".rocket-3").style.bottom = '2000px';
-            break;
+function updateLocalStorageAndList() {
+    updateLocalStorage();
+    updateList();
+}
+
+function putAndShow() {
+    var inputTextValue = inputText.value;
+    if (inputTextValue == '') {
+        return;
+    }
+    todoList.push(inputTextValue);
+
+    updateLocalStorage();
+    updateList();
+}
+
+inputButton.addEventListener('click', putAndShow);
+
+var list = document.querySelector('.list');
+
+function updateList(event) {
+
+    var todoListString = window.localStorage.getItem('todoList');
+    if (todoListString == null || todoListString == '') {
+        todoListString = '[]';
+    }
+    todoList = JSON.parse(todoListString);
+
+    var length = todoList.length;
+    var string = '';
+    for (var i = 0; i < length; i++) {
+        string += "<li>" + todoList[i] + "<button data-num=" + i + ">刪除</button></li>";
     }
 
+    list.innerHTML = string;
+
 }
 
-body.addEventListener('keydown', goRocket, false);
+updateList();
 
-//=====
+function removeItemFromList(e) {
 
-var mouseImg = document.querySelector('.mouseImg');
+    if (e.target.nodeName != 'BUTTON') {
+        return
+    }
 
-function getPosition(e) {
+    todoList.splice(e.target.dataset.num, 1);
 
-    mouseImg.style.left = e.clientX + 'px';
-    mouseImg.style.top = e.clientY + 'px';
+    updateLocalStorageAndList();
 }
 
-body.addEventListener('mousemove', getPosition, false);
+list.addEventListener('click', removeItemFromList);
