@@ -1,61 +1,28 @@
-var todoList = [];
+var send = document.querySelector('.send');
 
-var inputButton = document.querySelector('.inputButton');
-var inputText = document.querySelector('.inputText');
+send.addEventListener('click', signup, false);
 
-function updateLocalStorage() {
-    window.localStorage.setItem('todoList', JSON.stringify(todoList));
-}
+function signup() {
 
-function updateLocalStorageAndList() {
-    updateLocalStorage();
-    updateList();
-}
+    var email = document.querySelector('.email').value;
+    var password = document.querySelector('.password').value;
 
-function putAndShow() {
-    var inputTextValue = inputText.value;
-    if (inputTextValue == '') {
-        return;
-    }
-    todoList.push(inputTextValue);
-
-    updateLocalStorage();
-    updateList();
-}
-
-inputButton.addEventListener('click', putAndShow);
-
-var list = document.querySelector('.list');
-
-function updateList(event) {
-
-    var todoListString = window.localStorage.getItem('todoList');
-    if (todoListString == null || todoListString == '') {
-        todoListString = '[]';
-    }
-    todoList = JSON.parse(todoListString);
-
-    var length = todoList.length;
-    var string = '';
-    for (var i = 0; i < length; i++) {
-        string += "<li>" + todoList[i] + "<button data-num=" + i + ">刪除</button></li>";
+    var account = {
+        email: email,
+        password: password
     }
 
-    list.innerHTML = string;
+    var accountStr = JSON.stringify(account);
 
-}
+    var xhr = new XMLHttpRequest();
+    xhr.open('post', 'https://hexschool-tutorial.herokuapp.com/api/signup',true);
+    xhr.setRequestHeader('Content-type','application/json');
+    xhr.send(accountStr);
+    xhr.onload = function () {
 
-updateList();
+        var response = JSON.parse(xhr.responseText);
 
-function removeItemFromList(e) {
-
-    if (e.target.nodeName != 'BUTTON') {
-        return
+        alert(response.message);
     }
 
-    todoList.splice(e.target.dataset.num, 1);
-
-    updateLocalStorageAndList();
 }
-
-list.addEventListener('click', removeItemFromList);
