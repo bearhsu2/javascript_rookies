@@ -1,53 +1,10 @@
-document.querySelector('.signup').addEventListener('click', signup, false);
-document.querySelector('.login').addEventListener('click', login, false);
+const listLen = document.querySelectorAll('.list li').length;
 
-function signup() {
+for (let i = 0; i < listLen; i++) {
 
-    var email = document.querySelector('.email').value;
-    var password = document.querySelector('.password').value;
-
-    var account = {
-        email: email,
-        password: password
-    }
-
-    var accountStr = JSON.stringify(account);
-
-    var xhr = new XMLHttpRequest();
-    xhr.open('post', 'https://hexschool-tutorial.herokuapp.com/api/signup', true);
-    xhr.setRequestHeader('Content-type', 'application/json');
-    xhr.send(accountStr);
-    xhr.onload = function () {
-        var response = JSON.parse(xhr.responseText);
-
-        alert(response.message);
-    }
-
-
+    document.querySelectorAll('.list li')[i].addEventListener(
+        'click', function () {
+            alert(i + 1);
+        }
+    );
 }
-
-function login() {
-
-    var email = document.querySelector('.email').value;
-    var password = document.querySelector('.password').value;
-
-    var account = {
-        email: email,
-        password: password
-    }
-
-    var accountStr = JSON.stringify(account);
-
-    var xhr = new XMLHttpRequest();
-    xhr.open('post', 'https://hexschool-tutorial.herokuapp.com/api/signin', true);
-    xhr.setRequestHeader('Content-type', 'application/json');
-    xhr.send(accountStr);
-    xhr.onload = function () {
-        var response = JSON.parse(xhr.responseText);
-
-        alert(response.message);
-    }
-
-}
-
-
