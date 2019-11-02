@@ -1,10 +1,20 @@
-const listLen = document.querySelectorAll('.list li').length;
+var app = new Vue({
 
-for (let i = 0; i < listLen; i++) {
-
-    document.querySelectorAll('.list li')[i].addEventListener(
-        'click', function () {
-            alert(i + 1);
+    el: "#app",
+    data: {
+        todoList: [],
+        newTodo: ''
+    },
+    methods: {
+        addTodo(newTodo) {
+            this.todoList.push({
+                content: newTodo,
+                finished: false
+            });
+        },
+        removeTodo(todo){
+            this.todoList.splice(this.todoList.indexOf(todo), 1);
         }
-    );
-}
+    }
+
+});

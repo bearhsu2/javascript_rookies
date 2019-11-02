@@ -2,20 +2,37 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
     <title>Document</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
 
-<ul class="list">
-    <li>1</li>
-    <li>2</li>
-    <li>3</li>
-</ul>
+
+<div id="app">
+    <input @keyup.enter="addTodo(newTodo)" type="text" v-model="newTodo">
+
+    <ul>
+        <li :class="{ completed: todo.finished}" v-for="todo in todoList">
+            <div class="view">
+                <input type="checkbox" v-model="todo.finished">
+                <label>{{todo.content}}</label>
+                - <a @click="removeTodo(todo)" @click.prevent href="#">Del</a>
+            </div>
+
+        </li>
+    </ul>
+
+    <div>
+        (debug) todoList:<br>
+        {{todoList}}
+    </div>
+
+</div>
 
 
+<script src="https://unpkg.com/vue"></script>
 <script src="js/all.js"></script>
 </body>
 </html>
