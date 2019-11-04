@@ -1,44 +1,37 @@
+var apiUrlPrefix = 'https://api.github.com/repos/vuejs/vue/commits?per_page=3&sha=';
 var app = new Vue({
 
     el: "#app",
     data: {
-        todoList: [],
-        newTodo: '',
-        filter: 'all'
+        branches: ['master', 'dev'],
+        currentBranch: 'master',
+        commits: null
+    },
+    created: function () {
+        this.fetchData()
+    },
+    watch: {
+        currentBranch: function () {
+            this.fetchData();
+        }
     },
     methods: {
-        addTodo(newTodo) {
-            this.todoList.push({
-                content: newTodo,
-                finished: false
-            });
-        },
-        removeTodo(todo) {
-            this.todoList.splice(this.todoList.indexOf(todo), 1);
+        fetchData: function () {
+            const xhr = new XMLHttpRequest();
+            const vm = this;
+
+            xhr.open('GET', apiUrlPrefix + vm.currentBranch);
+            xhr.onload = function(){
+                vm.commits = JSON.parse(xhr.responseText);
+                console.log(vm.commits);
+
+            };
+            xhr.send();
+
+
+            // alert(apiUrlPrefix);
         }
     },
-    computed: {
-        filteredTodoList: function () {
-
-            switch (this.filter) {
-                case 'finished':
-                    return this.todoList.filter(
-                        function (todo) {
-                            return todo.finished === true;
-                        }
-                    );
-                case 'unfinished':
-                    return this.todoList.filter(
-                        function (todo) {
-                            return todo.finished === false;
-                        }
-                    );
-                default:
-                    return this.todoList;
-
-            }
-        }
-
-    }
+    computed: {}
 
 });

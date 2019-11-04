@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -11,27 +11,32 @@
 
 
 <div id="app">
-    <input @keyup.enter="addTodo(newTodo)" type="text" v-model="newTodo">
+
+    <template v-for="branch in branches">
+
+        <input :value="branch"
+               type="radio"
+               v-model="currentBranch">
+        {{branch}}
+    </template>
 
     <ul>
-        <li v-bind:class="{ completed: todo.finished}" v-for="todo in filteredTodoList">
-            <div class="view">
-                <input type="checkbox" v-model="todo.finished">
-                <label>{{todo.content}}</label>
-                - <a @click="removeTodo(todo)" @click.prevent href="#">Del</a>
-            </div>
-
+        <li v-for="commit in commits">
+            <a :href="commit.html_url" target="_blank">{{commit.commit.message.substring(1,20)}}</a>
+            by {{commit.author.login}}
+            at {{commit.commit.author.date}}
         </li>
     </ul>
 
-    Show:
-    <br>
-    <input id="all" type="radio" v-model="filter" value="all"><label for="all">All</label>
-    <br>
-    <input id="unfinished" type="radio" v-model="filter" value="unfinished"><label for="unfinished">Unfinished</label>
-    <br>
-    <input id="finished" type="radio" v-model="filter" value="finished"><label for="finished">Finished</label>
+    <div>
+        === debug ===<br>
+        currentBranch: {{currentBranch}}<br>
+        commits: {{commits}}
+    </div>
 
+    <!--    <br>-->
+    <!--    <input id="unfinished" type="radio" v-model="filter" value="unfinished"><label for="unfinished">Unfinished</label>-->
+    <!--    <br>-->
 </div>
 
 
