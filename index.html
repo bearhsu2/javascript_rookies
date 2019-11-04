@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -14,7 +14,7 @@
     <input @keyup.enter="addTodo(newTodo)" type="text" v-model="newTodo">
 
     <ul>
-        <li :class="{ completed: todo.finished}" v-for="todo in todoList">
+        <li v-bind:class="{ completed: todo.finished}" v-for="todo in filteredTodoList">
             <div class="view">
                 <input type="checkbox" v-model="todo.finished">
                 <label>{{todo.content}}</label>
@@ -24,9 +24,21 @@
         </li>
     </ul>
 
+    Show:
+    <br>
+    <input id="all" type="radio" v-model="filter" value="all"><label for="all">All</label>
+    <br>
+    <input id="unfinished" type="radio" v-model="filter" value="unfinished"><label for="unfinished">Unfinished</label>
+    <br>
+    <input id="finished" type="radio" v-model="filter" value="finished"><label for="finished">Finished</label>
+
+
     <div>
+        ---<br>
         (debug) todoList:<br>
-        {{todoList}}
+        {{todoList}}<br>
+        ---<br>
+        {{filter}}
     </div>
 
 </div>
