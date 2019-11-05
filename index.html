@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -11,27 +11,15 @@
 
 
 <div id="app">
+    
+    <textarea name="inputArea" v-bind:value="inputText" v-on:input="update"></textarea>
+    <div v-html="markedText"></div>
 
-    <template v-for="branch in branches">
-
-        <input :value="branch"
-               type="radio"
-               v-model="currentBranch">
-        {{branch}}
-    </template>
-
-    <ul>
-        <li v-for="commit in commits">
-            <a :href="commit.html_url" target="_blank">{{commit.commit.message.substring(1,20)}}</a>
-            by {{commit.author.login}}
-            at {{commit.commit.author.date}}
-        </li>
-    </ul>
-
-   
 </div>
 
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.7.0/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"></script>
 <script src="https://unpkg.com/vue"></script>
 <script src="js/all.js"></script>
 </body>
